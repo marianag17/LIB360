@@ -1,0 +1,239 @@
+﻿@model IEnumerable<Lib360.Libro>
+
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="wrapper">
+	<div id="content-page" class="content-page " style="padding-left:0px">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="iq-card">
+						<div class="iq-card-header d-flex justify-content-between">
+							<div class="iq-header-title">
+								<h4 class="card-title">Libros</h4>
+							</div>
+						</div>
+						<div class="iq-card-body">
+							<div class="table-responsive">
+								<div class="row justify-content-between">
+									<div class="col-sm-12 col-md-6">
+										<div id="user_list_datatable_info" class="dataTables_filter">
+											<form class="mr-3 position-relative">
+												<div class="form-group mb-0">
+													<input type="search" class="form-control" id="exampleInputSearch" placeholder="Buscar" aria-controls="user-list-table">
+												</div>
+											</form>
+										</div>
+
+									</div>
+									<div class="col-sm-12 col-md-6">
+										<div class="user-list-files d-flex float-right">
+
+											<a class="Create iq-bg-primary" href="javascript:void(0);" data-placement="top" title="" data-original-title="Crear" data-toggle="modal">Crear nuevo libro</a>
+										</div>
+									</div>
+
+								</div>
+								<table id="user-list-table" class="table table-striped table-bordered mt-4" role="grid" aria-describedby="user-list-page-info">
+									<thead>
+										<tr>
+											<th>Nombre</th>
+											<th>Autor</th>
+											<th>Edición/Año</th>
+											<th>Pasillo</th>
+											<th>Copias disponibles</th>
+											<th>Acciones</th>
+										</tr>
+										@foreach (var item in Model)
+										{
+											<tr>
+												<td>
+													@Html.DisplayFor(modelItem => item.Nombre)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.Autor)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.Edicion)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.Pasillo)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.Cantidad)
+												</td>
+												<td>
+													<div class="d-flex align-items-center list-user-action">
+														<a href="javascript:void(0);" class="Edit iq-bg-primary edit" data-id="@item.IDLibro" data-placement="top" title="" data-original-title="Editar" data-toggle="modal"><i class="ri-pencil-line"></i></a>
+														<a href="javascript:void(0);" class="Delete iq-bg-primary delete" data-id="@item.IDLibro" data-placement="top" title="" data-original-title="Eliminar" data-toggle="modal"><i class="ri-delete-bin-line"></i></a>
+													</div>
+												</td>
+											</tr>
+										}
+
+								</table>
+							</div>
+							<div class="row justify-content-between mt-3">
+								<div id="user-list-page-info" class="col-md-6">
+									<span>Mostrando 3 de 3 resultados</span>
+								</div>
+								<div class="col-md-6">
+									<nav aria-label="Page navigation example">
+										<ul class="pagination justify-content-end mb-0">
+											<li class="page-item disabled">
+												<a class="page-link" href="#" tabindex="-1" aria-disabled="true">Anterior</a>
+											</li>
+											<li class="page-item active"><a class="page-link" href="#">1</a></li>
+											<li class="page-item"><a class="page-link" href="#">2</a></li>
+											<li class="page-item"><a class="page-link" href="#">3</a></li>
+											<li class="page-item">
+												<a class="page-link" href="#">Siguiente</a>
+											</li>
+										</ul>
+									</nav>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+<div id='myModal' class='modal fade' tabindex="-1" role="dialog">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+
+			<div id='myModalContent'></div>
+		</div>
+	</div>
+</div>
+
+<div id='myModal2' class='modal fade' tabindex="-1" role="dialog">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+
+			<div id='myModalContent2'></div>
+		</div>
+	</div>
+</div>
+
+<div id='myModal3' class='modal fade' tabindex="-1" role="dialog">
+	<div class="modal-dialog ">
+		<div class="modal-content">
+
+			<div id='myModalContent3'></div>
+		</div>
+	</div>
+</div>
+@section scripts{
+	<script src="~/Content/js/jquery-3.3.1.min.js"></script>
+	<script>
+		var PartialView1 = '/Libro/Create';
+		$(function () {
+			$(".Create").click(function () {
+				debugger;
+				var id = '2';
+				var options = { "backdrop": true, keyboard: true };
+				$.ajax({
+					type: "GET",
+					url: PartialView1,
+					contentType: "application/json; charset=utf-8",
+					data: { "Id": id },
+					datatype: "json",
+					success: function (data) {
+						debugger;
+						$('#myModalContent').html(data);
+						$('#myModal').modal(options);
+						$('#myModal').modal('show');
+
+					},
+					error: function () {
+						alert("Dynamic content load failed.");
+					}
+				});
+			});
+			//$("#closebtn").on('click',function(){
+			//    $('#myModal').modal('hide');
+
+			$("#closbtn").click(function () {
+				$('#myModal').modal('hide');
+			});
+		});
+	</script>
+	<script>
+
+		$(function () {
+			$(".Edit").click(function () {
+				debugger;
+				var $buttonClicked = $(this);
+				var id = $buttonClicked.attr('data-id');
+				var options = { "backdrop": true, keyboard: true };
+				var PartialView2 = '/Libro/Edit'
+				$.ajax({
+					type: "GET",
+					url: PartialView2,
+					contentType: "application/json; charset=utf-8",
+					data: { "Id": id },
+					datatype: "json",
+					success: function (data) {
+						debugger;
+						$('#myModalContent2').html(data);
+						$('#myModal2').modal(options);
+						$('#myModal2').modal('show');
+
+					},
+					error: function () {
+						alert("Dynamic content load failed.");
+					}
+				});
+			});
+			//$("#closebtn").on('click',function(){
+			//    $('#myModal').modal('hide');
+
+			$("#closbtn").click(function () {
+				$('#myModal2').modal('hide');
+			});
+		});
+	</script>
+
+	<script>
+
+		$(function () {
+			$(".Delete").click(function () {
+				debugger;
+				var $buttonClicked = $(this);
+				var id = $buttonClicked.attr('data-id');
+				var options = { "backdrop": true, keyboard: true };
+				var PartialView2 = '/Libro/Delete'
+				$.ajax({
+					type: "GET",
+					url: PartialView2,
+					contentType: "application/json; charset=utf-8",
+					data: { "Id": id },
+					datatype: "json",
+					success: function (data) {
+						debugger;
+						$('#myModalContent3').html(data);
+						$('#myModal3').modal(options);
+						$('#myModal3').modal('show');
+
+					},
+					error: function () {
+						alert("Dynamic content load failed.");
+					}
+				});
+			});
+			//$("#closebtn").on('click',function(){
+			//    $('#myModal').modal('hide');
+
+			$("#closbtn").click(function () {
+				$('#myModal3').modal('hide');
+			});
+		});
+	</script>
+}

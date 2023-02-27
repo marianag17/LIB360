@@ -1,0 +1,223 @@
+﻿
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LIB360</title>
+	<link rel="shortcut icon" href="~/Content/images/favicon.ico" />
+	<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/css/typography.css">
+	<link rel="stylesheet" href="~/Content/css/style.css">
+	<link rel="stylesheet" href="~/Content/css/responsive.css">
+</head>
+<body>
+	<!-- Wrapper Start -->
+	<div class="wrapper">
+		<!-- Sidebar  -->
+		<div class="iq-sidebar">
+			<div class="iq-sidebar-logo d-flex justify-content-between">
+				<a href="@Url.Action("Index","Home")" class="header-logo">
+					<img src="~/Content/images/grid (1).svg" class="img-fluid rounded-normal" alt="">
+					<div class="logo-title">
+						<span class="text-danger text-uppercase">LIB<span class="text-primary ml-1">360</span></span>
+					</div>
+				</a>
+				<div class="iq-menu-bt-sidebar">
+					<div class="iq-menu-bt align-self-center">
+						<div class="wrapper-menu">
+							<div class="main-circle"><i class="ri-arrow-left-s-line"></i></div>
+							<div class="hover-circle"><i class="ri-arrow-right-s-line"></i></div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id="sidebar-scrollbar">
+				<nav class="iq-sidebar-menu">
+					<ul id="iq-sidebar-toggle" class="iq-menu">
+						<li >
+							<a href="@Url.Action("Index","Home")"><i class="las la-house-damage"></i> Inicio </a>
+
+						</li>
+
+						<li>
+							<a href="#userinfo" class="iq-waves-effect" data-toggle="collapse" aria-expanded="false"><span class="ripple rippleEffect"></span><i class="las la-user-tie iq-arrow-left"></i><span>Usuarios</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+							<ul id="userinfo" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle" style="">
+
+								<li><a href="@Url.Action("Index","Usuario")"><i class="las la-th-list"></i>Manejar usuarios</a></li>
+							</ul>
+						</li>
+						<li>
+							<a href="#ui-elements" class="iq-waves-effect collapsed" data-toggle="collapse" aria-expanded="false"><i class="lab la-elementor iq-arrow-left"></i><span>Libros</span><i class="ri-arrow-right-s-line iq-arrow-right"></i></a>
+							<ul id="ui-elements" class="iq-submenu collapse" data-parent="#iq-sidebar-toggle">
+								<li class="form">
+								<li><a href="@Url.Action("Index","Libro")"><i class="las la-book"></i>Manejar Libros</a></li>
+							</ul>
+								</li>
+
+
+					</ul>
+					
+
+					
+				</nav>
+			</div>
+		</div>
+		<!-- TOP Nav Bar -->
+		<div class="iq-top-navbar">
+			<div class="iq-navbar-custom">
+				<nav class="navbar navbar-expand-lg navbar-light p-0">
+					<div class="iq-menu-bt d-flex align-items-center">
+						<div class="wrapper-menu">
+							<div class="main-circle"><i class="ri-arrow-left-s-line"></i></div>
+							<div class="hover-circle"><i class="ri-arrow-right-s-line"></i></div>
+						</div>
+						<div class="iq-navbar-logo d-flex justify-content-between">
+							<a href="@Url.Action("Index","Home")" class="header-logo">
+								<img src="images/grid (1).svg" class="img-fluid rounded-normal" alt="">
+								<div class="pt-2 pl-2 logo-title">
+									<span class="text-danger text-uppercase">LIB<span class="text-primary ml-1">360</span></span>
+								</div>
+							</a>
+						</div>
+					</div>
+					<div class="navbar-breadcrumb">
+						<h4 class="mb-0 text-dark">Inicio</h4>
+						<p class="mb-0"><span class="text-danger">Administrador</span></p>
+					</div>
+					<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-label="Toggle navigation">
+						<i class="ri-menu-3-line"></i>
+					</button>
+					<div class="collapse navbar-collapse" id="navbarSupportedContent">
+						<ul class="navbar-nav ml-auto navbar-list">
+							<li class="nav-item nav-icon">
+								<div class="iq-search-bar">
+									<form action="#" class="searchbox">
+										<input type="text" class="text search-input" placeholder="Buscar">
+										<a class="search-link" href="#"><i class="ri-search-line"></i></a>
+									</form>
+								</div>
+							</li>
+
+							<ul class="navbar-list">
+								<li class="line-height">
+									<a href="#" class="search-toggle iq-waves-effect d-flex align-items-center">
+										<img src="~/Content/images/user/user.png" class="img-fluid rounded-circle" alt="user">
+									</a>
+									<div class="iq-sub-dropdown iq-user-dropdown">
+										<div class="iq-card shadow-none m-0">
+											<div class="iq-card-body p-0 ">
+												<div class="bg-primary p-3">
+													<h5 class="mb-0 text-white line-height">Hola, Juan</h5>
+												</div>
+												<a href="profile-edit.html" class="iq-sub-card iq-bg-primary-hover">
+													<div class="media align-items-center">
+														<div class="rounded iq-card-icon iq-bg-primary">
+															<i class="ri-profile-line"></i>
+														</div>
+														<div class="media-body ml-3">
+															<h6 class="mb-0 ">Editar Usuario</h6>
+															<p class="mb-0 font-size-12">Modifica tus datos.</p>
+														</div>
+													</div>
+												</a>
+
+
+												<div class="d-inline-block w-100 text-center p-3">
+													<a class="bg-primary iq-sign-btn" href="sign-in.html" role="button">Cerrar sesión<i class="ri-login-box-line ml-2"></i></a>
+												</div>
+											</div>
+										</div>
+									</div>
+								</li>
+
+							</ul>
+						</ul>
+					</div>
+						</nav>
+
+			</div>
+		</div>
+		<!-- TOP Nav Bar END -->
+		
+	</div>
+	<!-- TOP Nav Bar END -->
+	<div class="container body-content">
+		@RenderBody()
+		<hr />
+		<footer class="iq-footer">
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-lg-6">
+						<ul class="list-inline mb-0">
+							<li class="list-inline-item"><a href="privacy-policy.html">Privacy Policy</a></li>
+							<li class="list-inline-item"><a href="terms-of-service.html">Terms of Use</a></li>
+						</ul>
+					</div>
+					<div class="col-lg-6 text-right">
+						Copyright 2020 <a href="#">LIB360</a> All Rights Reserved.
+					</div>
+				</div>
+			</div>
+		</footer>
+	</div>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="~/Content/js/jquery.min.js"></script>
+	<script src="~/Content/js/popper.min.js"></script>
+	<script src="~/Content/js/bootstrap.min.js"></script>
+	<!-- Appear JavaScript -->
+	<script src="~/Content/js/jquery.appear.js"></script>
+	<!-- Countdown JavaScript -->
+	<script src="~/Content/js/countdown.min.js"></script>
+	<!-- Counterup JavaScript -->
+	<script src="~/Content/js/waypoints.min.js"></script>
+	<script src="~/Content/js/jquery.counterup.min.js"></script>
+	<!-- Wow JavaScript -->
+	<script src="~/Content/js/wow.min.js"></script>
+	<!-- Apexcharts JavaScript -->
+	<script src="~/Content/js/apexcharts.js"></script>
+	<!-- Slick JavaScript -->
+	<script src="~/Content/js/slick.min.js"></script>
+	<!-- Select2 JavaScript -->
+	<script src="~/Content/js/select2.min.js"></script>
+	<!-- Owl Carousel JavaScript -->
+	<script src="~/Content/js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup JavaScript -->
+	<script src="~/Content/js/jquery.magnific-popup.min.js"></script>
+	<!-- Smooth Scrollbar JavaScript -->
+	<script src="~/Content/js/smooth-scrollbar.js"></script>
+	<!-- lottie JavaScript -->
+	<script src="~/Content/js/lottie.js"></script>
+	<!-- am core JavaScript -->
+	<script src="~/Content/js/core.js"></script>
+	<!-- am charts JavaScript -->
+	<script src="~/Content/js/charts.js"></script>
+	<!-- am animated JavaScript -->
+	<script src="~/Content/js/animated.js"></script>
+	<!-- am kelly JavaScript -->
+	<script src="~/Content/js/kelly.js"></script>
+	<!-- am maps JavaScript -->
+	<script src="~/Content/js/maps.js"></script>
+	<!-- am worldLow JavaScript -->
+	<script src="~/Content/js/worldLow.js"></script>
+	<!-- Raphael-min JavaScript -->
+	<script src="~/Content/js/raphael-min.js"></script>
+	<!-- Morris JavaScript -->
+	<script src="~/Content/js/morris.js"></script>
+	<!-- Morris min JavaScript -->
+	<script src="~/Content/js/morris.min.js"></script>
+	<!-- Flatpicker Js -->
+	<script src="~/Content/js/flatpickr.js"></script>
+	<!-- Style Customizer -->
+	<script src="~/Content/js/style-customizer.js"></script>
+	<!-- Chart Custom JavaScript -->
+	<script src="~/Content/js/chart-custom.js"></script>
+	<!-- Custom JavaScript -->
+	<script src="~/Content/js/custom.js"></script>
+</body>
+</html>
