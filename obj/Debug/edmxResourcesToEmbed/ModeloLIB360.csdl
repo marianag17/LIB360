@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LIB360Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="LIB360Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Libro" EntityType="LIB360Model.Libro" />
+    <EntitySet Name="Prestamo" EntityType="LIB360Model.Prestamo" />
+    <EntitySet Name="sysdiagrams" EntityType="LIB360Model.sysdiagrams" />
+    <EntitySet Name="Usuario" EntityType="LIB360Model.Usuario" />
+    <AssociationSet Name="FK_Prestamo_Libro" Association="LIB360Model.FK_Prestamo_Libro">
+      <End Role="Libro" EntitySet="Libro" />
+      <End Role="Prestamo" EntitySet="Prestamo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Prestamo_Usuario" Association="LIB360Model.FK_Prestamo_Usuario">
+      <End Role="Usuario" EntitySet="Usuario" />
+      <End Role="Prestamo" EntitySet="Prestamo" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Libro">
+    <Key>
+      <PropertyRef Name="IDLibro" />
+    </Key>
+    <Property Name="Nombre" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Autor" Type="String" MaxLength="80" FixedLength="false" Unicode="false" />
+    <Property Name="Edicion" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Pasillo" Type="Int32" />
+    <Property Name="Cantidad" Type="Int32" />
+    <Property Name="IDLibro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Prestamo" Relationship="LIB360Model.FK_Prestamo_Libro" FromRole="Libro" ToRole="Prestamo" />
+  </EntityType>
+  <EntityType Name="Prestamo">
+    <Key>
+      <PropertyRef Name="IDPrestamo" />
+    </Key>
+    <Property Name="IDLibro" Type="Int32" />
+    <Property Name="IDUsuario" Type="Int32" />
+    <Property Name="FechaInicio" Type="DateTime" Precision="0" />
+    <Property Name="FechaFin" Type="DateTime" Precision="0" />
+    <Property Name="Regresado" Type="Int32" />
+    <Property Name="IDPrestamo" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Libro" Relationship="LIB360Model.FK_Prestamo_Libro" FromRole="Prestamo" ToRole="Libro" />
+    <NavigationProperty Name="Usuario" Relationship="LIB360Model.FK_Prestamo_Usuario" FromRole="Prestamo" ToRole="Usuario" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="Usuario">
+    <Key>
+      <PropertyRef Name="IDUsuario" />
+    </Key>
+    <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Telefono" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="DPI" Type="String" MaxLength="13" FixedLength="false" Unicode="true" />
+    <Property Name="Correo" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Estado" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Rol" Type="Int32" />
+    <Property Name="Contrasena" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IDUsuario" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Prestamo" Relationship="LIB360Model.FK_Prestamo_Usuario" FromRole="Usuario" ToRole="Prestamo" />
+  </EntityType>
+  <Association Name="FK_Prestamo_Libro">
+    <End Type="LIB360Model.Libro" Role="Libro" Multiplicity="0..1" />
+    <End Type="LIB360Model.Prestamo" Role="Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Libro">
+        <PropertyRef Name="IDLibro" />
+      </Principal>
+      <Dependent Role="Prestamo">
+        <PropertyRef Name="IDLibro" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Prestamo_Usuario">
+    <End Type="LIB360Model.Usuario" Role="Usuario" Multiplicity="0..1" />
+    <End Type="LIB360Model.Prestamo" Role="Prestamo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Usuario">
+        <PropertyRef Name="IDUsuario" />
+      </Principal>
+      <Dependent Role="Prestamo">
+        <PropertyRef Name="IDUsuario" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
