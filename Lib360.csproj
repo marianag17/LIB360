@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
   <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -16,7 +17,7 @@
     <AssemblyName>Lib360</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
-    <UseIISExpress>true</UseIISExpress>
+    <UseIISExpress>false</UseIISExpress>
     <Use64BitIISExpress />
     <IISExpressSSLPort>44313</IISExpressSSLPort>
     <IISExpressAnonymousAuthentication />
@@ -46,17 +47,60 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.IdentityModel.Abstractions, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Abstractions.6.29.0\lib\net472\Microsoft.IdentityModel.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.JsonWebTokens, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.JsonWebTokens.6.29.0\lib\net472\Microsoft.IdentityModel.JsonWebTokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Logging, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Logging.6.29.0\lib\net472\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.IdentityModel.Tokens.6.29.0\lib\net472\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.IdentityModel.Tokens.Jwt, Version=6.29.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\System.IdentityModel.Tokens.Jwt.6.29.0\lib\net472\System.IdentityModel.Tokens.Jwt.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.6.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Runtime.CompilerServices.Unsafe.4.7.1\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Text.Encodings.Web, Version=4.0.5.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Encodings.Web.4.7.2\lib\net461\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Text.Json.4.7.2\lib\net461\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -128,9 +172,12 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Authentication.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LibroController.cs" />
+    <Compile Include="Controllers\PrestamoController.cs" />
     <Compile Include="Controllers\UsuarioController.cs" />
+    <Compile Include="Encrypt.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -164,10 +211,7 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\css\ajax-loader.gif" />
     <Content Include="Content\css\animate.css" />
     <Content Include="Content\css\bootstrap.min.css" />
@@ -190,129 +234,14 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\typography.css" />
     <Content Include="Content\css\variable.css" />
-    <Content Include="Content\fonts\dripicons-v2.svg" />
-    <Content Include="Content\fonts\fa-brands-400.svg" />
-    <Content Include="Content\fonts\fa-regular-400.svg" />
-    <Content Include="Content\fonts\fa-solid-900.svg" />
-    <Content Include="Content\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\fonts\ionicons.svg" />
-    <Content Include="Content\fonts\la-brands-400.svg" />
-    <Content Include="Content\fonts\la-regular-400.svg" />
-    <Content Include="Content\fonts\la-solid-900.svg" />
-    <Content Include="Content\fonts\remixicon.svg" />
-    <Content Include="Content\fonts\slick.svg" />
-    <Content Include="Content\images\bg-03.jpg" />
-    <Content Include="Content\images\booking\01.png" />
-    <Content Include="Content\images\booking\02.jpg" />
-    <Content Include="Content\images\booking\seat.svg" />
-    <Content Include="Content\images\error\02.png" />
     <Content Include="Content\images\error\404.png" />
-    <Content Include="Content\images\error\500.png" />
     <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\grid %281%29.svg" />
     <Content Include="Content\images\grid.svg" />
     <Content Include="Content\images\loader.gif" />
     <Content Include="Content\images\login\mail.png" />
     <Content Include="Content\images\logo-1.png" />
-    <Content Include="Content\images\logo-full.png" />
-    <Content Include="Content\images\logo-full2.png" />
-    <Content Include="Content\images\logo-white.png" />
     <Content Include="Content\images\logo.png" />
-    <Content Include="Content\images\page-img\01.jpg" />
-    <Content Include="Content\images\page-img\02.jpg" />
-    <Content Include="Content\images\page-img\03.jpg" />
-    <Content Include="Content\images\page-img\07.jpg" />
-    <Content Include="Content\images\page-img\08.jpg" />
-    <Content Include="Content\images\page-img\09.jpg" />
-    <Content Include="Content\images\page-img\10.jpg" />
-    <Content Include="Content\images\page-img\100.jpg" />
-    <Content Include="Content\images\page-img\11.jpg" />
-    <Content Include="Content\images\page-img\12.jpg" />
-    <Content Include="Content\images\page-img\13.jpg" />
-    <Content Include="Content\images\page-img\14.jpg" />
-    <Content Include="Content\images\page-img\15.jpg" />
-    <Content Include="Content\images\page-img\16.jpg" />
-    <Content Include="Content\images\page-img\17.jpg" />
-    <Content Include="Content\images\page-img\18.jpg" />
-    <Content Include="Content\images\page-img\19.jpg" />
-    <Content Include="Content\images\page-img\20.jpg" />
-    <Content Include="Content\images\page-img\21.jpg" />
-    <Content Include="Content\images\page-img\22.jpg" />
-    <Content Include="Content\images\page-img\23.jpg" />
-    <Content Include="Content\images\page-img\24.jpg" />
-    <Content Include="Content\images\page-img\25.jpg" />
-    <Content Include="Content\images\page-img\26.jpg" />
-    <Content Include="Content\images\page-img\27.jpg" />
-    <Content Include="Content\images\page-img\28.jpg" />
-    <Content Include="Content\images\page-img\29.png" />
-    <Content Include="Content\images\page-img\30.png" />
-    <Content Include="Content\images\page-img\31.png" />
-    <Content Include="Content\images\page-img\32.png" />
-    <Content Include="Content\images\page-img\33.png" />
-    <Content Include="Content\images\page-img\34.png" />
-    <Content Include="Content\images\page-img\35.png" />
-    <Content Include="Content\images\page-img\36.png" />
-    <Content Include="Content\images\page-img\37.jpg" />
-    <Content Include="Content\images\page-img\37.png" />
-    <Content Include="Content\images\page-img\38.png" />
-    <Content Include="Content\images\page-img\39.png" />
-    <Content Include="Content\images\page-img\41.png" />
-    <Content Include="Content\images\page-img\42.jpg" />
-    <Content Include="Content\images\page-img\42.png" />
-    <Content Include="Content\images\page-img\43.jpg" />
-    <Content Include="Content\images\page-img\44.jpg" />
-    <Content Include="Content\images\page-img\45.jpg" />
-    <Content Include="Content\images\page-img\46.jpg" />
-    <Content Include="Content\images\page-img\47.jpg" />
-    <Content Include="Content\images\page-img\48.jpg" />
-    <Content Include="Content\images\page-img\49.jpg" />
-    <Content Include="Content\images\page-img\50.png" />
-    <Content Include="Content\images\page-img\51.png" />
-    <Content Include="Content\images\page-img\a1.png" />
-    <Content Include="Content\images\page-img\a2.png" />
-    <Content Include="Content\images\page-img\a3.png" />
-    <Content Include="Content\images\page-img\a4.png" />
-    <Content Include="Content\images\page-img\diamond.png" />
-    <Content Include="Content\images\page-img\g1.jpg" />
-    <Content Include="Content\images\page-img\g2.jpg" />
-    <Content Include="Content\images\page-img\g3.jpg" />
-    <Content Include="Content\images\page-img\g4.jpg" />
-    <Content Include="Content\images\page-img\g5.jpg" />
-    <Content Include="Content\images\page-img\g6.jpg" />
-    <Content Include="Content\images\page-img\g7.jpg" />
-    <Content Include="Content\images\page-img\g8.jpg" />
-    <Content Include="Content\images\page-img\g9.jpg" />
-    <Content Include="Content\images\page-img\img-success.png" />
-    <Content Include="Content\images\page-img\man.svg" />
-    <Content Include="Content\images\page-img\p1.jpg" />
-    <Content Include="Content\images\page-img\page-load-loader.gif" />
-    <Content Include="Content\images\page-img\profile-bg.jpg" />
-    <Content Include="Content\images\page-img\s1.jpg" />
-    <Content Include="Content\images\page-img\s2.jpg" />
-    <Content Include="Content\images\page-img\s3.jpg" />
-    <Content Include="Content\images\page-img\side-bkg.png" />
-    <Content Include="Content\images\page-img\tag_blue.svg" />
-    <Content Include="Content\images\page-img\tag_red.svg" />
-    <Content Include="Content\images\small\04.svg" />
-    <Content Include="Content\images\small\05.svg" />
-    <Content Include="Content\images\small\07.png" />
-    <Content Include="Content\images\small\08.png" />
-    <Content Include="Content\images\small\09.png" />
-    <Content Include="Content\images\small\10.png" />
-    <Content Include="Content\images\small\11.png" />
-    <Content Include="Content\images\small\12.png" />
-    <Content Include="Content\images\small\13.png" />
-    <Content Include="Content\images\small\14.png" />
-    <Content Include="Content\images\small\flag-01.png" />
-    <Content Include="Content\images\small\flag-02.png" />
-    <Content Include="Content\images\small\flag-03.png" />
-    <Content Include="Content\images\small\flag-04.png" />
-    <Content Include="Content\images\small\flag-05.png" />
-    <Content Include="Content\images\small\flag-06.png" />
-    <Content Include="Content\images\small\img-1.jpg" />
-    <Content Include="Content\images\small\jpg.svg" />
-    <Content Include="Content\images\small\xml.svg" />
-    <Content Include="Content\images\small\zip.svg" />
     <Content Include="Content\images\user\01-%281%29.jpg" />
     <Content Include="Content\images\user\01.jpg" />
     <Content Include="Content\images\user\02.jpg" />
@@ -336,7 +265,6 @@
     <Content Include="Content\images\user\user.png" />
     <Content Include="Content\js\algoliasearchLite.min.js" />
     <Content Include="Content\js\animated.js" />
-    <Content Include="Content\js\apexcharts.js" />
     <Content Include="Content\js\bodymovin.js" />
     <Content Include="Content\js\bootstrap.min.js" />
     <Content Include="Content\js\chart-custom.js" />
@@ -367,9 +295,8 @@
     <Content Include="Content\js\smooth-scrollbar.js" />
     <Content Include="Content\js\style-customizer.js" />
     <Content Include="Content\js\waypoints.min.js" />
-    <Content Include="Content\js\worldHigh.js" />
-    <Content Include="Content\js\worldLow.js" />
     <Content Include="Content\js\wow.min.js" />
+    <Content Include="Content\lib\Libro.js" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -386,59 +313,6 @@
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\fonts\AvenirLTStd-Black.eot" />
-    <Content Include="Content\fonts\AvenirLTStd-Book.eot" />
-    <Content Include="Content\fonts\AvenirLTStd-Roman.eot" />
-    <Content Include="Content\fonts\dripicons-v2.eot" />
-    <Content Include="Content\fonts\dripicons-v2.ttf" />
-    <Content Include="Content\fonts\dripicons-v2.woff" />
-    <Content Include="Content\fonts\fa-brands-400.eot" />
-    <Content Include="Content\fonts\fa-brands-400.ttf" />
-    <Content Include="Content\fonts\fa-brands-400.woff" />
-    <Content Include="Content\fonts\fa-brands-400.woff2" />
-    <Content Include="Content\fonts\fa-regular-400.eot" />
-    <Content Include="Content\fonts\fa-regular-400.ttf" />
-    <Content Include="Content\fonts\fa-regular-400.woff" />
-    <Content Include="Content\fonts\fa-regular-400.woff2" />
-    <Content Include="Content\fonts\fa-solid-900.eot" />
-    <Content Include="Content\fonts\fa-solid-900.ttf" />
-    <Content Include="Content\fonts\fa-solid-900.woff" />
-    <Content Include="Content\fonts\fa-solid-900.woff2" />
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\ionicons.eot" />
-    <Content Include="Content\fonts\ionicons.ttf" />
-    <Content Include="Content\fonts\ionicons.woff" />
-    <Content Include="Content\fonts\la-brands-400.eot" />
-    <Content Include="Content\fonts\la-brands-400.ttf" />
-    <Content Include="Content\fonts\la-brands-400.woff" />
-    <Content Include="Content\fonts\la-brands-400.woff2" />
-    <Content Include="Content\fonts\la-regular-400.eot" />
-    <Content Include="Content\fonts\la-regular-400.ttf" />
-    <Content Include="Content\fonts\la-regular-400.woff" />
-    <Content Include="Content\fonts\la-regular-400.woff2" />
-    <Content Include="Content\fonts\la-solid-900.eot" />
-    <Content Include="Content\fonts\la-solid-900.ttf" />
-    <Content Include="Content\fonts\la-solid-900.woff" />
-    <Content Include="Content\fonts\la-solid-900.woff2" />
-    <Content Include="Content\fonts\Now-Bold.woff" />
-    <Content Include="Content\fonts\Now-Bold.woff2" />
-    <Content Include="Content\fonts\Now-Regular.woff" />
-    <Content Include="Content\fonts\Now-Regular.woff2" />
-    <Content Include="Content\fonts\remixicon.eot" />
-    <Content Include="Content\fonts\remixicon.ttf" />
-    <Content Include="Content\fonts\remixicon.woff" />
-    <Content Include="Content\fonts\remixicon.woff2" />
-    <Content Include="Content\fonts\slick.eot" />
-    <Content Include="Content\fonts\slick.ttf" />
-    <Content Include="Content\fonts\slick.woff" />
-    <Content Include="Content\images\small\data.json" />
-    <Content Include="Content\images\small\data1.json" />
-    <Content Include="Content\images\small\data2.json" />
-    <Content Include="Content\images\small\match-code.json" />
     <EntityDeploy Include="ModeloLIB360.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ModeloLIB360.Designer.cs</LastGenOutput>
@@ -446,6 +320,7 @@
     <Content Include="ModeloLIB360.edmx.diagram">
       <DependentUpon>ModeloLIB360.edmx</DependentUpon>
     </Content>
+    <None Include="Properties\PublishProfiles\LIB36020230411193949 - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -471,12 +346,20 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Libro\Index.cshtml" />
     <Content Include="Views\Usuario\Index.cshtml" />
-    <Content Include="Views\Libro\Create.cshtml" />
     <Content Include="Views\Libro\Edit.cshtml" />
     <Content Include="Views\Libro\Delete.cshtml" />
     <Content Include="Views\Usuario\Create.cshtml" />
     <Content Include="Views\Usuario\Delete.cshtml" />
     <Content Include="Views\Usuario\Edit.cshtml" />
+    <Content Include="Views\Prestamo\Index.cshtml" />
+    <Content Include="Views\Prestamo\Create.cshtml" />
+    <Content Include="Views\Libro\Create.cshtml" />
+    <Content Include="Views\Prestamo\Edit.cshtml" />
+    <Content Include="Views\Prestamo\Delete.cshtml" />
+    <Content Include="Views\Usuario\SignIn.cshtml" />
+    <Content Include="Views\Usuario\SignUp.cshtml" />
+    <Content Include="Views\Prestamo\PrestamoUsuario.cshtml" />
+    <Content Include="Views\Libro\VerLibros.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -487,10 +370,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
@@ -514,9 +394,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerPort>53931</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:62380/</IISUrl>
+          <IISUrl>http://localhost/Lib360</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
@@ -531,7 +411,10 @@
       <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
     </PropertyGroup>
     <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', 'packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
   </Target>
+  <Import Project="packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">

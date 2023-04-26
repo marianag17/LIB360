@@ -1,0 +1,105 @@
+﻿@model Lib360.Usuario
+
+@{
+	ViewBag.Title = "SignIn";
+	Layout = null;
+
+}
+<!doctype html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LIB360</title>
+	<link rel="shortcut icon" href="~/Content/images/favicon.ico" />
+	<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/css/typography.css">
+	<link rel="stylesheet" href="~/Content/css/style.css">
+</head>
+<body>
+	@using (Html.BeginForm("SignIn", "Usuario", FormMethod.Post))
+	{
+		<section class="sign-in-page">
+			<div class="container p-0" id="sign-in-page-box">
+				<div class="bg-white form-container sign-in-container">
+					<div class="sign-in-page-data">
+						<div class="sign-in-from w-100 m-auto">
+							<h1 class="mb-3 text-center">Iniciar Sesión</h1>
+							<p class="text-center text-dark">Ingresa tu correo y tu contraseña para acceder</p>
+							<form class="mt-4">
+								<div class="form-group">
+									<label for="Correo">Correo</label>
+									@Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label for="Contraseña">Contraseña</label>
+									@Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+									@Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+								</div>
+								<div class="sign-info">
+									<input type="submit" class="btn btn-success" value="Iniciar Sesión">
+									<span class="text-dark dark-color d-block line-height-2">¿No tienes cuenta? <a href="@Url.Action("SignUp","Usuario")">Regístrate</a></span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="overlay-container">
+					<div class="overlay">
+						<div class="overlay-panel overlay-left">
+							<a class="mb-5" href="#"><img src='~/Content/images/grid (1).svg' class="img-fluid" alt="logo"></a>
+							<p>To Keep connected with us please login with your personal info</p>
+							<button class="btn iq-border-primary mt-2" id="signIn">Sign In</button>
+						</div>
+						<div class="overlay-panel overlay-right">
+							<a class="sign-in-logo mb-5" href="@Url.Action("SignUp","Usuario")"><img src='~/Content/images/grid (1).svg' class="img-fluid" alt="logo"></a>
+							<p>Ingresa tus datos y comienza</p>
+							<a class="btn iq-border-primary" href="@Url.Action("SignUp","Usuario")">Registrarme</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+	<!-- Sign in Start -->
+	<!-- Sign in END -->
+	<!-- Optional JavaScript -->
+	<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<!-- Appear JavaScript -->
+	<script src="js/jquery.appear.js"></script>
+	<!-- Countdown JavaScript -->
+	<script src="js/countdown.min.js"></script>
+	<!-- Counterup JavaScript -->
+	<script src="js/waypoints.min.js"></script>
+	<script src="js/jquery.counterup.min.js"></script>
+	<!-- Wow JavaScript -->
+	<script src="js/wow.min.js"></script>
+	<!-- Apexcharts JavaScript -->
+	<script src="js/apexcharts.js"></script>
+	<!-- lottie JavaScript -->
+	<script src="js/lottie.js"></script>
+	<!-- Slick JavaScript -->
+	<script src="js/slick.min.js"></script>
+	<!-- Select2 JavaScript -->
+	<script src="js/select2.min.js"></script>
+	<!-- Owl Carousel JavaScript -->
+	<script src="js/owl.carousel.min.js"></script>
+	<!-- Magnific Popup JavaScript -->
+	<script src="js/jquery.magnific-popup.min.js"></script>
+	<!-- Smooth Scrollbar JavaScript -->
+	<script src="js/smooth-scrollbar.js"></script>
+	<!-- Style Customizer -->
+	<script src="js/style-customizer.js"></script>
+	<!-- Chart Custom JavaScript -->
+	<script src="js/chart-custom.js"></script>
+	<!-- Custom JavaScript -->
+	<script src="js/custom.js"></script>
+</body>
+</html>
+
+

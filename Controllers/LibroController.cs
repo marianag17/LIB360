@@ -17,6 +17,10 @@ namespace Lib360.Controllers
         // GET: Libro
         public ActionResult Index()
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             Session["IDLibro"] = null;
             Session["CantLibro"] = null;
             return View(db.Libro.ToList());
@@ -25,6 +29,10 @@ namespace Lib360.Controllers
         // GET: Libro/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -39,8 +47,12 @@ namespace Lib360.Controllers
 
         // GET: Libro/Create
         [HttpGet]
-        public ActionResult Create(int id)
+        public ActionResult Create(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             return PartialView("Create");
         }
 
@@ -65,6 +77,10 @@ namespace Lib360.Controllers
         // GET: Libro/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -102,6 +118,10 @@ namespace Lib360.Controllers
         // GET: Libro/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -126,6 +146,16 @@ namespace Lib360.Controllers
             db.Libro.Remove(libro);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        [HttpGet]
+        public ActionResult VerLibros()
+        {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
+            return View(db.Libro.ToList());
         }
 
         protected override void Dispose(bool disposing)

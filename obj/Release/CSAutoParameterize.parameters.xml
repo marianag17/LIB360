@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="LIB360Entities-Web.config Connection String" description="LIB360Entities Cadena de conexión que usa la aplicación en web.config para obtener acceso a la base de datos." defaultValue="metadata=res://*/ModeloLIB360.csdl|res://*/ModeloLIB360.ssdl|res://*/ModeloLIB360.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=lib360dbserver.database.windows.net;initial catalog=LIB360_db;persist security info=True;user id=Mariana;password=1D?irection123;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\maria\\OneDrive\\Escritorio\\LIB360\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='LIB360Entities']/@connectionString" />
+  </parameter>
+</parameters>

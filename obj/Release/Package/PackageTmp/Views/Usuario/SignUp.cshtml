@@ -1,0 +1,88 @@
+﻿@model Lib360.Usuario
+
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>LIB360</title>
+	<link rel="shortcut icon" href="~/Content/images/favicon.ico" />
+	<link rel="stylesheet" href="~/Content/css/bootstrap.min.css">
+	<link rel="stylesheet" href="~/Content/css/typography.css">
+	<link rel="stylesheet" href="~/Content/css/style.css">
+</head>
+<body>
+	@using (Html.BeginForm("SignUp", "Usuario", FormMethod.Post))
+	{
+		<section class="sign-in-page">
+			<div class="container p-0" id="sign-in-page-box">
+				<div class="bg-white form-container sign-in-container" style="overflow:scroll; padding-top:300px; padding-left:100px">
+					<div class="sign-in-page-data center">
+						<div class="sign-in-from w-100 m-auto">
+							<h1 class="mb-3 text-center">Regístrate</h1>
+							<p class="text-center text-dark">Ingresa tus datos para acceder</p>
+							<form class="mt-4">
+								<div class="form-group">
+									<label>Nombres</label>
+									@Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label>Apellidos</label>
+									@Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Apellido, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label for="Correo">DPI</label>
+									@Html.EditorFor(model => model.DPI, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.DPI, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label for="Correo">Número de teléfono</label>
+									@Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label for="Correo">Correo</label>
+									@Html.EditorFor(model => model.Correo, new { htmlAttributes = new { @class = "form-control" } })
+									@Html.ValidationMessageFor(model => model.Correo, "", new { @class = "text-danger" })
+								</div>
+								<div class="form-group">
+									<label for="Contraseña">Contraseña</label>
+									@Html.EditorFor(model => model.Contrasena, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+									@Html.ValidationMessageFor(model => model.Contrasena, "", new { @class = "text-danger" })
+								</div>
+								<div class="sign-info">
+									<input type="submit" class="btn btn-primary mb-2" value="Registrarme">
+									<span class="text-dark d-block line-height-2">¿Ya tienes una cuenta? <a href="@Url.Action("SignIn","Usuario")">Inicia sesión</a></span>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div class="overlay-container">
+					<div class="overlay">
+						<div class="overlay-panel overlay-left">
+							<a class="sign-in-logo mb-5" href="#"><img src='~/Content/images/grid (1).svg' class="img-fluid" alt="logo"></a>
+							<p>To Keep connected with us please login with your personal info</p>
+							<button class="btn iq-border-primary" id="signIn">Sign Up</button>
+						</div>
+						<div class="overlay-panel overlay-right">
+							<a class="sign-in-logo mb-5" href="#"><img src='~/Content/images/grid (1).svg' class="img-fluid" alt="logo"></a>
+							<p>Ingresa tus datos y comienza</p>
+							<a class="btn iq-border-primary" href="@Url.Action("SignIn","Usuario")">Iniciar Sesión</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	}
+
+
+</body>
+</html>

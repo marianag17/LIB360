@@ -1,0 +1,72 @@
+﻿@model IEnumerable<Lib360.Prestamo>
+
+@{
+	ViewBag.Title = "Préstamos";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<head>
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/line-awesome/1.3.0/line-awesome/css/line-awesome.min.css" rel="stylesheet">
+	<link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<div class="wrapper">
+	<div id="content-page" class="content-page " style="padding-left:0px">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="iq-card">
+						<div class="iq-card-header d-flex justify-content-between">
+							<div class="iq-header-title">
+								<h4 class="card-title">Préstamos</h4>
+							</div>
+						</div>
+						<div class="iq-card-body">
+							<div class="table-responsive">
+								<table id="user-list-table" class="table table-striped table-bordered mt-4" role="grid" aria-describedby="user-list-page-info">
+									<thead>
+										<tr>
+											<th>Usuario</th>
+											<th>Libro</th>
+											<th>Fecha Inicio</th>
+											<th>Fecha Fin</th>
+											<th>Regresado</th>
+										</tr>
+										@foreach (var item in Model)
+										{
+											<tr>
+												<td>
+													@Html.DisplayFor(modelItem => item.Usuario.Nombre) @Html.DisplayFor(modelItem => item.Usuario.Apellido)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.Libro.Nombre)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.FechaInicio)
+												</td>
+												<td>
+													@Html.DisplayFor(modelItem => item.FechaFin)
+												</td>
+												<td>
+													@if (item.Regresado == 0)
+													{
+														<a style="color:red">No regresado</a>
+													}
+												@if (item.Regresado == 1)
+												{
+													<a style="color: darkseagreen">Regresado</a>
+												}
+
+											</td>
+											
+										</tr>
+									}
+
+								</table>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

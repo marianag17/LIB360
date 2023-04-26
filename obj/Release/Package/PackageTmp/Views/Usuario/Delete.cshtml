@@ -1,0 +1,20 @@
+﻿@model Lib360.Usuario
+<div class="modal-header">
+	<h4 class="modal-title">Eliminar Usuario</h4>
+	<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+</div>
+<div class="modal-body">
+	<p>¿Está seguro de eliminar este Usuario?</p>
+	<p class="text-warning"><small>Esta acción no se puede deshacer.</small></p>
+</div>
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+
+	<div class="modal-footer">
+		<input type="button" class="btn btn-default" data-dismiss="modal" value="Cancelar">
+		<input type="submit" class="btn btn-danger" value="Borrar">
+	</div>
+}

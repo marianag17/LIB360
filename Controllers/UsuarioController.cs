@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography.Xml;
 using System.Web;
 using System.Web.Mvc;
 using Lib360;
@@ -17,13 +18,22 @@ namespace Lib360.Controllers
         // GET: Usuario
         public ActionResult Index()
         {
+            
             Session["IDUsuario"] = null;
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                 return RedirectToAction("SignIn","Usuario");
+            }
             return View(db.Usuario.ToList());
         }
 
         // GET: Usuario/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -37,8 +47,12 @@ namespace Lib360.Controllers
         }
 
         // GET: Usuario/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             List<SelectListItem> Roles = new List<SelectListItem>();
             Roles.Add(new SelectListItem() { Text = "Admin", Value = "1" });
             Roles.Add(new SelectListItem() { Text = "User", Value = "2" });
@@ -57,8 +71,15 @@ namespace Lib360.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Nombre,Apellido,Telefono,DPI,Correo,Estado,Rol,Contrasena,IDUsuario")] Usuario usuario)
         {
+
+            if (usuario.Contrasena == null || usuario.Correo == null || usuario.Nombre == null || usuario.Apellido == null)
+            {
+                return PartialView(usuario);
+            }
             if (ModelState.IsValid)
             {
+                string pass = Encrypt.GetSHA256(usuario.Contrasena);
+                usuario.Contrasena = pass;
                 db.Usuario.Add(usuario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -70,6 +91,10 @@ namespace Lib360.Controllers
         // GET: Usuario/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             List<SelectListItem> Roles = new List<SelectListItem>();
             Roles.Add(new SelectListItem() { Text = "Admin", Value = "1" });
             Roles.Add(new SelectListItem() { Text = "User", Value = "2" });
@@ -111,6 +136,10 @@ namespace Lib360.Controllers
         // GET: Usuario/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["UserEmail"] == null && Session["UserName"] == null && Session["UserID"] == null && Session["UserRol"] == null)
+            {
+                return RedirectToAction("SignIn", "Usuario");
+            }
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -136,6 +165,91 @@ namespace Lib360.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpGet]
+        public ActionResult SignIn()
+        {
+            Session["UserEmail"] =null;
+            Session["UserName"] = null;
+            Session["UserID"] = null;
+            Session["UserRol"] = null;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignIn(Usuario usuario)
+        {
+            if (usuario.Contrasena == null || usuario.Correo == null)
+            {
+                return View();
+            }
+            var us = db.Usuario.Where(x => x.Correo == usuario.Correo).FirstOrDefault();
+            if (us != null)
+            {
+                String nombre = us.Nombre as String;
+                string enc = Encrypt.GetSHA256(usuario.Contrasena);
+                if (enc == us.Contrasena)
+                {
+                    Session["UserEmail"] = Convert.ToString(us.Correo);
+                    Session["UserName"] =nombre;
+                    Session["UserID"] = Convert.ToString(us.IDUsuario);
+                    Session["UserRol"] = us.Rol;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return View();
+            }
+            
+        }
+
+
+        [HttpGet]
+        public ActionResult SignUp()
+        {
+            Session["UserEmail"] = null;
+            Session["UserName"] = null;
+            Session["UserID"] = null;
+            Session["UserRol"] = null;
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SignUp(Usuario usuario)
+        {
+            if (usuario.Contrasena == null || usuario.Correo == null || usuario.Nombre == null || usuario.Apellido == null)
+            {
+                return View();
+            }
+            if (ModelState.IsValid)
+            {
+                var us = db.Usuario.Where(x => x.Correo == usuario.Correo).FirstOrDefault();
+                if (us == null)
+                {
+                    string pass = Encrypt.GetSHA256(usuario.Contrasena);
+                    usuario.Contrasena = pass;
+                    usuario.Rol = 2;
+                    usuario.Estado = "Activo";
+                    db.Usuario.Add(usuario);
+                    db.SaveChanges();
+                    Session["UserEmail"] = usuario.Correo;
+                    Session["UserName"] = usuario.Nombre;
+                    Session["UserID"] = usuario.IDUsuario;
+                    Session["UserRol"] = usuario.Rol;
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    return View();
+                }
+                
+            }
+            return View();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)
